@@ -1,5 +1,5 @@
 /**
- ou should create a User POJO that will store the information that will be read from the file.
+ you should create a User POJO that will store the information that will be read from the file.
 
 The User POJO should contain three properties:
 
@@ -13,20 +13,16 @@ Once this data is appropriately stored in your Java application, you can begin t
  */
 package com.coderscampus.assign3;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * @author Mina K. Fahmy
  *
  */
 public class User {
-	private String username;
-	private String password;
-	private String name;
-	private int unsucessfulLoginAttempts;
+	 private String username;
+	 private String password;
+	 private String name;
+	 private int unsucessfulLoginAttempts;
 
 	/**
 	 * @return the unsucessfulLogin Attempts
@@ -71,6 +67,7 @@ public class User {
 	/**
 	 * @param name the name to set
 	 */
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -81,17 +78,11 @@ public class User {
 
 	/**
 	 * @param unsucessfulLoginAttempts the unsucessfulLoginAttempts to set
+	 * @return 
 	 */
 	public void setUnsucessfulLoginAttempts(int unsucessfulLoginAttempts) {
-		this.unsucessfulLoginAttempts = unsucessfulLoginAttempts;
+		 this.unsucessfulLoginAttempts = unsucessfulLoginAttempts;
 	}
-
-//	UserService userService = new UserService();
-//	User[] users = new User[4];
-//	for (int i=0; i < 4 ; i++) {
-//		users[i] = userService.createUser("user" + (i + 1), "password" + (i + 1), "name" + (i+1));
-//	}
-//	System.out.println(users);
 
 	
 }

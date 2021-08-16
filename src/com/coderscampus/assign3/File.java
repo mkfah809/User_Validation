@@ -11,23 +11,57 @@ import java.io.IOException;
 /**
  * @author Mina K. Fahmy
  *
- */
+
 public class File {
-	
+
 	public String getFile() {
+
+		User user = new User();
 
 		BufferedReader fileReader = null;
 		String line = "";
 		@SuppressWarnings("unused")
-		String[] userinfoArray = line.split(",");
+		UserInput input = new UserInput();
 
 		try {
 
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 
+//break line
 			while ((line = fileReader.readLine()) != null) {
+				String[] userinfoArray = line.split(",");
 				userinfoArray = line.split(",");
-				System.out.println(line);
+
+				// break comma
+				for (String OneRawSplit : userinfoArray) {
+					
+					System.out.println(OneRawSplit);
+					String[] numbersArray = OneRawSplit.split(",");
+					
+				    OneRawSplit.split(",");
+					user.setUsername(OneRawSplit);
+					System.out.println("Username is: " + user.getUsername() );
+					user.setPassword(OneRawSplit);
+					 OneRawSplit.split(",");
+					System.out.println("Password is: " + user.getPassword());
+					user.setName(OneRawSplit);
+					 OneRawSplit.split(",");
+					System.out.println("Name is: " + user.getName());
+
+					for (int i = 1; i == 5; i++) {
+						System.out.println("Enter your username: " + input.IsValidInput());
+						System.out.println("Enter your password: " + input.IsValidInput());
+						if (input.IsValidInput().equals(user.getUsername())
+								&& input.IsValidInput().equals(user.getPassword())) {
+							System.out.println("Welcome " + user.getName() + " to the Heeky-Beeky Company!");
+							break;
+						} else {
+							System.out.println("Invalid login, please try again\r\n" + "\r\n" + "");
+							user.setUnsucessfulLoginAttempts(1);
+							i++;
+						}
+					}
+				}
 
 			}
 
@@ -45,4 +79,4 @@ public class File {
 		return line;
 	}
 
-}
+} */
