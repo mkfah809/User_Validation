@@ -7,70 +7,58 @@ import java.io.IOException;
 public class ReturnLine {
 	private static String userUsername = "";
 	private static String userpassword = "";
-	
+	private static String[] userinfoArray;
+	private static String line = null;
+	private static String welcomeUser = "";
+	private static int count = 0;
+	public static int invalidLogin = 0;
+	static User[] users = new User[4]; // parent-each user
+	private static boolean userFound = false;
+
 	public static String getLine() {
 
-		String[] userinfoArray;
-		String line = null;
+			getuserreadInfo();
+			getpromptUser();
 
-		User[] users = new User[4]; // parent-each user
-		int count = 0;
+		do {
+			
+				getUserLogin();
+				getValidation();
+			
+		} while (invalidLogin != 4);
 		
-		int invalidLogin = 0;
+		return line;
+
+	}
+
+//	prompt user
+	private static void getpromptUser() {
+
+//		5 loging attempts.
+		System.out.println("Enter your Username here: ");
+		userUsername = UserInput.userInput();
+		System.out.println("Enter your Password here: ");
+		userpassword = UserInput.userInput();
+	}
+
+//	read the file 
+	private static void getuserreadInfo() {
 
 		try {
 			BufferedReader fileReader = new BufferedReader(new FileReader("data.txt"));
-
-//			read the file 
 			while ((line = fileReader.readLine()) != null) {
-
 				System.out.println(line);
-
 				User user = new User();
 				userinfoArray = line.split(",");
 				user.setUsername(userinfoArray[0]);
 				user.setPassword(userinfoArray[1]);
 				user.setName(userinfoArray[2]);
-				
-				
 				users[count] = user;
 				count++;
-				
-				if (count == 4) 
-				{break;}
-			}
-			
-			
-			promptUser();
-			 String welcomeUser = "";
-			boolean userFound = false;
-			while (invalidLogin < 4) {
-				for(User user : users) {
-//					username / password validation.
-					if (userUsername.equals(user.getUsername()) && userpassword.equals(user.getPassword())) {	
-						userFound = true;
-						welcomeUser = user.getName();
-						
-					}
-				} 
-				
-				
-				int usernameValidation = userUsername.length();
-				
-				
-				if (userFound == false) {
-					invalidLogin++;
-					MessageOutput.InvalidLoginMessage(0);
-					promptUser();
-				}
-				else if(userFound == true) {
-					MessageOutput.ValidLoginMessage(1, welcomeUser);
-					System.exit(0);
+				if (count == 4) {
+					break;
 				}
 			}
-			
-			MessageOutput.LockOutMessage(2);
-			fileReader.close();
 		} catch (ArrayIndexOutOfBoundsException e) {
 			MessageOutput.ArrayIndexExceptionMessage(3);
 			e.printStackTrace();
@@ -80,23 +68,43 @@ public class ReturnLine {
 		} catch (NullPointerException e) {
 			MessageOutput.NullPointerExceptionMessage(5);
 			e.printStackTrace();
+		} finally {
+			// fileReader.close();
 		}
-	
-		return line;
-
-
 	}
-	
-	private static void promptUser() {
 
-//		5 loging attempts.
-		System.out.println("Enter your Username here: ");
-		userUsername = UserInput.userInput();
-		System.out.println("Enter your Password here: ");
-		userpassword = UserInput.userInput();
-	}
-	
-	private static void userValidation() {
+	private static void getValidation() {
+		if (userFound == false) {
+
+			invalidLogin++;
+			MessageOutput.InvalidLoginMessage(0);
+			getpromptUser();
+		}
+		if (userFound == true) {
+			MessageOutput.ValidLoginMessage(1, welcomeUser);
+			System.exit(0);
+		}
 		
+	
+	}
+
+	private static void getUserLogin() {
+
+		for (User user : users) {
+
+			// User Sensivity
+			boolean validSensvitiy = userUsername.equalsIgnoreCase(user.getUsername());
+			if (validSensvitiy == false) {
+			} else {
+				userUsername = user.getUsername();
+			}
+//				username / password validation.
+			if (userUsername.equals(user.getUsername()) && userpassword.equals(user.getPassword())) {
+				userFound = true;
+				welcomeUser = user.getName();
+
+			}
+
+		}
 	}
 }
