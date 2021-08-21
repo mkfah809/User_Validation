@@ -12,15 +12,12 @@ you'll need to read this information from a file (called "data.txt") and import 
 package com.coderscampus.assign3;
 
 
-import java.io.IOException;
 
 
 public class UserApplication {
 
 	public static void main(String[] args)  {
-	ReturnLine returnLine = new ReturnLine();
-	returnLine.getLine();
-	
+	ReturnLine.getLine();
 	}
 }
 
