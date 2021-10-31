@@ -11,13 +11,9 @@ you'll need to read this information from a file (called "data.txt") and import 
  */
 package com.coderscampus.assign3;
 
-
-
-
 public class UserApplication {
 
-	public static void main(String[] args)  {
-	ReturnLine.getLine();
+	public static void main(String[] args) {
+		ReturnLine.getLine();
 	}
 }
-

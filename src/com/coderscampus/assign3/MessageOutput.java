@@ -3,14 +3,11 @@ package com.coderscampus.assign3;
 public class MessageOutput {
 
 	private static String[] OutputMessage = new String[10];
-	
 
 	static void InvalidLoginMessage(int invalidloginmesssageid) {
 		User user = new User();
 		OutputMessage[0] = "Invalid login, please try again";
-
 		if (invalidloginmesssageid == 0) {
-
 			System.out.println(OutputMessage[0]);
 			int invalidLogin = 0;
 			invalidLogin = invalidLogin + 1;
@@ -41,6 +38,7 @@ public class MessageOutput {
 		}
 
 	}
+
 	static void IOExceptionMessage(int ioexceptionmesssageid) {
 		OutputMessage[4] = "Ops, It coudln't find the file.";
 		if (ioexceptionmesssageid == 4) {
@@ -48,7 +46,7 @@ public class MessageOutput {
 
 		}
 	}
-	
+
 	static void NullPointerExceptionMessage(int nullpointerexceptionmesssageid) {
 		OutputMessage[5] = "Ops, I can find an empty pointer.";
 		if (nullpointerexceptionmesssageid == 5) {

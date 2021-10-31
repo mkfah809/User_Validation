@@ -13,16 +13,15 @@ Once this data is appropriately stored in your Java application, you can begin t
  */
 package com.coderscampus.assign3;
 
-
 /**
  * @author Mina K. Fahmy
  *
  */
 public class User {
-	 private String username;
-	 private String password;
-	 private String name;
-	 private int unsucessfulLoginAttempts;
+	private String username;
+	private String password;
+	private String name;
+	private int unsucessfulLoginAttempts;
 
 	/**
 	 * @return the unsucessfulLogin Attempts
@@ -67,7 +66,7 @@ public class User {
 	/**
 	 * @param name the name to set
 	 */
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -78,11 +77,10 @@ public class User {
 
 	/**
 	 * @param unsucessfulLoginAttempts the unsucessfulLoginAttempts to set
-	 * @return 
+	 * @return
 	 */
 	public void setUnsucessfulLoginAttempts(int unsucessfulLoginAttempts) {
-		 this.unsucessfulLoginAttempts = unsucessfulLoginAttempts;
+		this.unsucessfulLoginAttempts = unsucessfulLoginAttempts;
 	}
 
-	
 }

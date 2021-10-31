@@ -17,15 +17,14 @@ public class ReturnLine {
 
 	public static String getLine() {
 
-			getuserreadInfo();
+		getuserreadInfo();
 		do {
-			
-				getpromptUser();
-				getUserLogin();
-				getValidation();
-			
+			getpromptUser();
+			getUserLogin();
+			getValidation();
+
 		} while (invalidLogin <= 4);
-		
+
 		return line;
 
 	}
@@ -68,7 +67,7 @@ public class ReturnLine {
 			MessageOutput.NullPointerExceptionMessage(5);
 			e.printStackTrace();
 		} finally {
-			 //fileReader.close();
+			// fileReader.close();
 		}
 	}
 
@@ -82,12 +81,11 @@ public class ReturnLine {
 
 			invalidLogin++;
 			MessageOutput.InvalidLoginMessage(0);
-		}
-		else if(userFound == true) {
+		} else if (userFound == true) {
 			MessageOutput.ValidLoginMessage(1, welcomeUser);
 			System.exit(0);
 		}
-		
+
 	}
 
 	private static void getUserLogin() {
@@ -104,7 +102,6 @@ public class ReturnLine {
 			if (userUsername.equals(user.getUsername()) && userpassword.equals(user.getPassword())) {
 				userFound = true;
 				welcomeUser = user.getName();
-
 			}
 
 		}
